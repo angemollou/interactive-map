@@ -1,0 +1,123 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body,
+#wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+@supports (display: flex) {
+  #wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 15px;
+    margin: 15px;
+  }
+}
+
+@supports not (display: flex) {
+  #map {
+    float: left;
+  }
+}
+
+/* #wrapper .header {
+  width: 200px;
+} */
+
+
+#map path {
+  fill: rgb(83, 212, 255);
+  fill-opacity: 1;
+  stroke: white;
+  stroke-opacity: 1;
+  stroke-width: 1px;
+  transition: color .3s;
+}
+
+#details {
+  width: 25%;
+}
+
+#details a {
+  color: inherit;
+  text-decoration: none;
+  transition: color .3s;
+}
+
+#map a.active>path {
+  fill: rgb(83, 112, 255);
+}
+
+#details a.active summary {
+  color: rgb(83, 112, 255);
+  font-weight: bolder;
+}
+
+
+
+
+/*
+ *
+ *  TOOLTIP STYLES */
+#details {
+  display: none;
+}
+
+#tooltip {
+  background: #333;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+#arrow,
+#arrow::before {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: inherit;
+}
+
+#arrow {
+  visibility: hidden;
+}
+
+#arrow::before {
+  visibility: visible;
+  content: '';
+  transform: rotate(45deg);
+}
+
+#tooltip[data-popper-placement^='top']>#arrow {
+  bottom: -4px;
+}
+
+#tooltip[data-popper-placement^='bottom']>#arrow {
+  top: -4px;
+}
+
+#tooltip[data-popper-placement^='left']>#arrow {
+  right: -4px;
+}
+
+#tooltip[data-popper-placement^='right']>#arrow {
+  left: -4px;
+}
+
+#tooltip {
+  /* ... */
+  display: none;
+  max-width: 200px;
+}
+
+#tooltip[data-show] {
+  display: block;
+}
